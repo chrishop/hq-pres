@@ -27,6 +27,9 @@ jobs:
         env:
           MARP_USER: root:root
 
+      - name: Fix output ownership
+        run: sudo chown -R $(id -u):$(id -g) output
+
       - name: Copy images
         run: cp slides/*.jpg slides/*.png slides/*.jpeg slides/*.gif output/ 2>/dev/null || true
 
